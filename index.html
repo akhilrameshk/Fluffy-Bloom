@@ -5,10 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fluffy Bloom</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<!-- BETTER FONT (ELEGANT LIKE LOGO) -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
-body {margin:0;font-family:'Poppins',sans-serif;background:#fff;color:#333}
+body {
+margin:0;
+font-family:'Poppins',sans-serif;
+background:#fff;
+color:#333;
+}
 
 /* NAVBAR */
 nav{
@@ -23,26 +29,11 @@ z-index:1000;
 transition:0.3s;
 }
 
-nav.shrink{
-padding:6px 20px;
-}
+nav.shrink{padding:6px 20px;}
 
-/* LOGO */
-.logo-container{
-display:flex;
-align-items:center;
-}
+.header-logo{height:30px;}
+nav.shrink .header-logo{height:24px;}
 
-.header-logo{
-height:28px;
-width:auto;
-}
-
-nav.shrink .header-logo{
-height:22px;
-}
-
-/* NAV LINKS */
 nav a{
 color:#fff;
 margin:0 12px;
@@ -62,41 +53,44 @@ cursor:pointer;
 position:fixed;
 top:0;
 left:0;
-width:60%;
+width:65%;
 height:100%;
 background:#000;
 display:flex;
 flex-direction:column;
-padding:30px 20px;
+padding:20px;
 transform:translateX(-100%);
 transition:0.3s;
 z-index:2000;
 }
 
-.mobile-menu a{
-color:#fff;
-font-size:20px;
-margin:12px 0;
-text-decoration:none;
-border-bottom:1px solid #333;
-padding-bottom:8px;
-}
-
-.mobile-menu.active{
-transform:translateX(0);
-}
-
+/* LOGO INSIDE MENU */
 .menu-logo{
-color:#ff2c7d;
-font-size:24px;
+text-align:center;
 margin-bottom:30px;
 }
+
+.menu-logo img{
+width:140px;
+}
+
+/* MENU LINKS */
+.mobile-menu a{
+color:#fff;
+font-size:18px;
+margin:15px 0;
+text-decoration:none;
+border-bottom:1px solid #333;
+padding-bottom:10px;
+}
+
+.mobile-menu.active{transform:translateX(0);}
 
 /* HERO */
 .hero{
 height:90vh;
 background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
-url('https://images.unsplash.com/photo-1581044777550-4cfa60707c03');
+url('https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=1200');
 background-size:cover;
 background-position:center;
 display:flex;
@@ -107,8 +101,13 @@ color:#fff;
 text-align:center;
 }
 
-.hero h1{font-size:48px;margin:0}
-.hero p{font-size:20px}
+.hero h1{
+font-family:'Playfair Display',serif;
+font-size:48px;
+margin:0;
+}
+
+.hero p{font-size:18px;}
 
 .hero button{
 padding:12px 25px;
@@ -120,12 +119,12 @@ cursor:pointer;
 }
 
 /* SECTIONS */
-section{
-padding:60px 20px;
-text-align:center;
-}
+section{padding:60px 20px;text-align:center;}
 
-h2{color:#8b0033}
+h2{
+font-family:'Playfair Display',serif;
+color:#8b0033;
+}
 
 /* PRODUCTS */
 .products{
@@ -141,17 +140,32 @@ box-shadow:0 5px 15px rgba(0,0,0,0.1);
 transition:0.3s;
 }
 
-.card:hover{
-transform:translateY(-8px);
-}
+.card:hover{transform:translateY(-8px);}
 
-.card img{
+/* SLIDER */
+.slider{
+position:relative;
 width:100%;
 height:200px;
-object-fit:cover;
+overflow:hidden;
 }
 
-.card h3{margin:10px}
+.slider img{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:0;
+transition:opacity 1s ease-in-out;
+}
+
+.slider img.active{opacity:1;}
+
+.card h3{
+font-family:'Playfair Display',serif;
+margin:10px;
+}
+
 .card p{padding:0 10px 15px}
 
 /* ABOUT */
@@ -159,7 +173,6 @@ object-fit:cover;
 
 /* CONTACT */
 .contact{background:#111;color:#fff}
-.contact p{margin:8px 0}
 
 /* WHATSAPP */
 .whatsapp{
@@ -179,8 +192,21 @@ footer{
 background:#000;
 color:#fff;
 text-align:center;
-padding:10px;
+padding:15px;
 }
+
+.footer-menu{
+margin-bottom:10px;
+}
+
+.footer-menu a{
+color:#fff;
+margin:0 10px;
+text-decoration:none;
+font-size:14px;
+}
+
+.footer-menu a:hover{color:#ff2c7d;}
 
 /* RESPONSIVE */
 @media(max-width:768px){
@@ -195,18 +221,21 @@ nav div:nth-child(2){display:none;}
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-<div class="menu-logo">Fluffy Bloom</div>
+
+<div class="menu-logo">
+<img src="https://via.placeholder.com/150x50?text=Fluffy+Bloom">
+</div>
+
 <a href="#" onclick="toggleMenu()">Home</a>
 <a href="#about" onclick="toggleMenu()">About</a>
 <a href="#products" onclick="toggleMenu()">Products</a>
 <a href="#contact" onclick="toggleMenu()">Contact</a>
+
 </div>
 
 <!-- NAVBAR -->
 <nav>
-<div class="logo-container">
-<img src="logo-full.png" alt="Fluffy Bloom" class="header-logo">
-</div>
+<img src="https://via.placeholder.com/120x40?text=Fluffy+Bloom" class="header-logo">
 
 <div>
 <a href="#">Home</a>
@@ -228,41 +257,61 @@ nav div:nth-child(2){display:none;}
 <!-- ABOUT -->
 <section id="about" class="about">
 <h2>About Us</h2>
-<p>Fluffy Bloom offers premium quality ladies innerwear, maternity wear, shapewear, and stylish nightwear designed for comfort and confidence.</p>
-<p>Located at Municipal Shopping Complex, Cherthala, Alappuzha, Kerala.</p>
+<p>Premium ladies innerwear, shapewear, maternity wear & nightwear crafted for comfort and confidence.</p>
 </section>
 
 <!-- PRODUCTS -->
 <section id="products">
 <h2>Our Products</h2>
+
 <div class="products">
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990">
+<div class="slider">
+<img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600" class="active">
+<img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600">
+<img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=600">
+</div>
 <h3>Innerwear</h3>
-<p>Comfortable everyday essentials</p>
+<p>Comfortable essentials</p>
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348">
+<div class="slider">
+<img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600" class="active">
+<img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=600">
+<img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=600">
+</div>
 <h3>Shapewear</h3>
-<p>Perfect fit for every body</p>
+<p>Perfect fit</p>
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519">
-<h3>Maternity Wear</h3>
-<p>Soft & supportive wear</p>
+<div class="slider">
+<img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=600" class="active">
+<img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=600">
+<img src="https://images.unsplash.com/photo-1593032465171-8c3b28e3f7e4?w=600">
+</div>
+<h3>Maternity</h3>
+<p>Soft support</p>
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03">
+<div class="slider">
+<img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=600" class="active">
+<img src="https://images.unsplash.com/photo-1593032465171-8c3b28e3f7e4?w=600">
+<img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600">
+</div>
 <h3>Nightwear</h3>
-<p>Relax in style</p>
+<p>Relax style</p>
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1593032465171-8c3b28e3f7e4">
+<div class="slider">
+<img src="https://images.unsplash.com/photo-1593032465171-8c3b28e3f7e4?w=600" class="active">
+<img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=600">
+<img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600">
+</div>
 <h3>Accessories</h3>
 <p>Trendy add-ons</p>
 </div>
@@ -275,8 +324,6 @@ nav div:nth-child(2){display:none;}
 <h2>Contact Us</h2>
 <p>📞 +91 8129784499</p>
 <p>📞 +91 97466 36555</p>
-<p>📍 Municipal Shopping Complex, Opp: Karthyayani Devi Temple</p>
-<p>Cherthala (PO), Alappuzha, Kerala - 688524</p>
 </section>
 
 <!-- WHATSAPP -->
@@ -284,6 +331,12 @@ nav div:nth-child(2){display:none;}
 
 <!-- FOOTER -->
 <footer>
+<div class="footer-menu">
+<a href="#">Home</a>
+<a href="#about">About</a>
+<a href="#products">Products</a>
+<a href="#contact">Contact</a>
+</div>
 <p>© 2026 Fluffy Bloom</p>
 </footer>
 
@@ -293,13 +346,31 @@ const menu = document.getElementById('mobileMenu');
 menu.classList.toggle('active');
 }
 
+// CLOSE MENU OUTSIDE CLICK
+document.addEventListener('click', function(event) {
+const menu = document.getElementById('mobileMenu');
+const icon = document.querySelector('.menu-icon');
+
+if (!menu.contains(event.target) && !icon.contains(event.target)) {
+menu.classList.remove('active');
+}
+});
+
+// NAV SHRINK
 window.addEventListener('scroll', function(){
 const nav = document.querySelector('nav');
-if(window.scrollY > 50){
-nav.classList.add('shrink');
-}else{
-nav.classList.remove('shrink');
-}
+nav.classList.toggle('shrink', window.scrollY > 50);
+});
+
+// AUTO SLIDER
+document.querySelectorAll('.slider').forEach(slider => {
+let imgs = slider.querySelectorAll('img');
+let i = 0;
+setInterval(() => {
+imgs[i].classList.remove('active');
+i = (i + 1) % imgs.length;
+imgs[i].classList.add('active');
+}, 3000);
 });
 </script>
 
