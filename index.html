@@ -76,10 +76,12 @@ border-bottom:1px solid #333;
 padding-bottom:10px;
 }
 
-/* HERO (NO BROKEN IMAGE) */
+/* HERO IMAGE FIXED */
 .hero{
 height:90vh;
-background:linear-gradient(to right,#ff2c7d,#8b0033);
+background:url('https://picsum.photos/1200/800?random=10');
+background-size:cover;
+background-position:center;
 display:flex;
 justify-content:center;
 align-items:center;
@@ -93,9 +95,9 @@ text-align:center;
 
 .hero button{
 padding:12px 25px;
-background:#fff;
-color:#ff2c7d;
+background:#ff2c7d;
 border:none;
+color:#fff;
 border-radius:25px;
 cursor:pointer;
 }
@@ -115,21 +117,18 @@ gap:25px;
 border-radius:15px;
 overflow:hidden;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
-background:#fff;
 }
 
-/* SAFE IMAGE BLOCK */
-.product-img{
+/* PRODUCT IMAGES FIXED */
+.product-img img{
 width:100%;
 height:220px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:#f4f4f4;
-font-weight:bold;
-color:#777;
-font-size:18px;
+object-fit:cover;
+display:block;
 }
+
+.card h3{margin:10px;}
+.card p{padding:0 10px 15px;}
 
 /* ABOUT */
 .about{background:#f9f9f9}
@@ -207,31 +206,41 @@ nav div:nth-child(2){display:none;}
 <div class="products">
 
 <div class="card">
-<div class="product-img">Innerwear</div>
+<div class="product-img">
+<img src="https://picsum.photos/400/300?random=1">
+</div>
 <h3>Innerwear</h3>
-<p>Bras & essentials</p>
+<p>Essentials</p>
 </div>
 
 <div class="card">
-<div class="product-img">Shapewear</div>
+<div class="product-img">
+<img src="https://picsum.photos/400/300?random=2">
+</div>
 <h3>Shapewear</h3>
-<p>Body shaping wear</p>
+<p>Body shaping</p>
 </div>
 
 <div class="card">
-<div class="product-img">Maternity</div>
+<div class="product-img">
+<img src="https://picsum.photos/400/300?random=3">
+</div>
 <h3>Maternity</h3>
 <p>Comfort wear</p>
 </div>
 
 <div class="card">
-<div class="product-img">Nightwear</div>
+<div class="product-img">
+<img src="https://picsum.photos/400/300?random=4">
+</div>
 <h3>Nightwear</h3>
 <p>Sleepwear</p>
 </div>
 
 <div class="card">
-<div class="product-img">Accessories</div>
+<div class="product-img">
+<img src="https://picsum.photos/400/300?random=5">
+</div>
 <h3>Accessories</h3>
 <p>Add-ons</p>
 </div>
@@ -244,7 +253,6 @@ nav div:nth-child(2){display:none;}
 <h2>Contact Us</h2>
 <p>📞 +91 8129784499</p>
 <p>📞 +91 97466 36555</p>
-<p>📍 Cherthala, Alappuzha</p>
 </section>
 
 <!-- FOOTER -->
