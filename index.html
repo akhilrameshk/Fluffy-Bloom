@@ -5,13 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fluffy Bloom</title>
 
-<!-- BETTER FONT (ELEGANT LIKE LOGO) -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-body {
+body{
 margin:0;
-font-family:'Poppins',sans-serif;
+font-family:'Playfair Display', serif;
 background:#fff;
 color:#333;
 }
@@ -31,21 +30,13 @@ transition:0.3s;
 
 nav.shrink{padding:6px 20px;}
 
-.header-logo{height:30px;}
-nav.shrink .header-logo{height:24px;}
+.header-logo{height:32px;}
+nav.shrink .header-logo{height:26px;}
 
 nav a{
 color:#fff;
 margin:0 12px;
 text-decoration:none;
-font-weight:500;
-}
-
-.menu-icon{
-display:none;
-font-size:24px;
-color:#fff;
-cursor:pointer;
 }
 
 /* MOBILE MENU */
@@ -64,27 +55,22 @@ transition:0.3s;
 z-index:2000;
 }
 
-/* LOGO INSIDE MENU */
+.mobile-menu.active{transform:translateX(0);}
+
 .menu-logo{
 text-align:center;
 margin-bottom:30px;
 }
 
-.menu-logo img{
-width:140px;
-}
+.menu-logo img{width:150px;}
 
-/* MENU LINKS */
 .mobile-menu a{
 color:#fff;
-font-size:18px;
 margin:15px 0;
 text-decoration:none;
 border-bottom:1px solid #333;
 padding-bottom:10px;
 }
-
-.mobile-menu.active{transform:translateX(0);}
 
 /* HERO */
 .hero{
@@ -101,12 +87,7 @@ color:#fff;
 text-align:center;
 }
 
-.hero h1{
-font-family:'Playfair Display',serif;
-font-size:48px;
-margin:0;
-}
-
+.hero h1{font-size:48px;}
 .hero p{font-size:18px;}
 
 .hero button{
@@ -120,11 +101,7 @@ cursor:pointer;
 
 /* SECTIONS */
 section{padding:60px 20px;text-align:center;}
-
-h2{
-font-family:'Playfair Display',serif;
-color:#8b0033;
-}
+h2{color:#8b0033;}
 
 /* PRODUCTS */
 .products{
@@ -142,11 +119,11 @@ transition:0.3s;
 
 .card:hover{transform:translateY(-8px);}
 
-/* SLIDER */
+/* FIXED SLIDER */
 .slider{
 position:relative;
 width:100%;
-height:200px;
+height:220px;
 overflow:hidden;
 }
 
@@ -155,18 +132,15 @@ position:absolute;
 width:100%;
 height:100%;
 object-fit:cover;
+object-position:center;
 opacity:0;
 transition:opacity 1s ease-in-out;
 }
 
 .slider img.active{opacity:1;}
 
-.card h3{
-font-family:'Playfair Display',serif;
-margin:10px;
-}
-
-.card p{padding:0 10px 15px}
+.card h3{margin:10px;}
+.card p{padding:0 10px 15px;}
 
 /* ABOUT */
 .about{background:#f9f9f9}
@@ -183,7 +157,6 @@ background:#25D366;
 color:#fff;
 padding:15px;
 border-radius:50%;
-font-size:22px;
 text-decoration:none;
 }
 
@@ -195,24 +168,16 @@ text-align:center;
 padding:15px;
 }
 
-.footer-menu{
-margin-bottom:10px;
-}
-
 .footer-menu a{
 color:#fff;
 margin:0 10px;
 text-decoration:none;
-font-size:14px;
 }
-
-.footer-menu a:hover{color:#ff2c7d;}
 
 /* RESPONSIVE */
 @media(max-width:768px){
 nav div:nth-child(2){display:none;}
-.menu-icon{display:block;}
-.hero h1{font-size:30px;}
+.menu-icon{display:block;color:#fff;font-size:24px;}
 }
 </style>
 </head>
@@ -221,21 +186,19 @@ nav div:nth-child(2){display:none;}
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-
 <div class="menu-logo">
-<img src="https://via.placeholder.com/150x50?text=Fluffy+Bloom">
+<img src="logo-full.png">
 </div>
 
 <a href="#" onclick="toggleMenu()">Home</a>
 <a href="#about" onclick="toggleMenu()">About</a>
 <a href="#products" onclick="toggleMenu()">Products</a>
 <a href="#contact" onclick="toggleMenu()">Contact</a>
-
 </div>
 
 <!-- NAVBAR -->
 <nav>
-<img src="https://via.placeholder.com/120x40?text=Fluffy+Bloom" class="header-logo">
+<img src="logo-full.png" class="header-logo">
 
 <div>
 <a href="#">Home</a>
@@ -266,51 +229,56 @@ nav div:nth-child(2){display:none;}
 
 <div class="products">
 
+<!-- INNERWEAR -->
 <div class="card">
 <div class="slider">
-<img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600" class="active">
-<img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600">
-<img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=600">
+<img src="https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?w=600" class="active">
+<img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?w=600">
+<img src="https://images.unsplash.com/photo-1593032465171-8c3b28e3f7e4?w=600">
 </div>
 <h3>Innerwear</h3>
 <p>Comfortable essentials</p>
 </div>
 
+<!-- SHAPEWEAR -->
 <div class="card">
 <div class="slider">
-<img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600" class="active">
+<img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=600" class="active">
+<img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600">
 <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=600">
-<img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=600">
 </div>
 <h3>Shapewear</h3>
 <p>Perfect fit</p>
 </div>
 
+<!-- MATERNITY -->
 <div class="card">
 <div class="slider">
-<img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=600" class="active">
-<img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=600">
-<img src="https://images.unsplash.com/photo-1593032465171-8c3b28e3f7e4?w=600">
+<img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600" class="active">
+<img src="https://images.unsplash.com/photo-1590080877777-5c0cfcf99bdf?w=600">
+<img src="https://images.unsplash.com/photo-1588774069410-84ae30757c8e?w=600">
 </div>
 <h3>Maternity</h3>
 <p>Soft support</p>
 </div>
 
+<!-- NIGHTWEAR -->
 <div class="card">
 <div class="slider">
-<img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=600" class="active">
+<img src="https://images.unsplash.com/photo-1600180758890-6b94519a8ba6?w=600" class="active">
+<img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=600">
 <img src="https://images.unsplash.com/photo-1593032465171-8c3b28e3f7e4?w=600">
-<img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600">
 </div>
 <h3>Nightwear</h3>
 <p>Relax style</p>
 </div>
 
+<!-- ACCESSORIES -->
 <div class="card">
 <div class="slider">
-<img src="https://images.unsplash.com/photo-1593032465171-8c3b28e3f7e4?w=600" class="active">
-<img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=600">
-<img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600">
+<img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=600" class="active">
+<img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=600">
+<img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=600">
 </div>
 <h3>Accessories</h3>
 <p>Trendy add-ons</p>
@@ -342,35 +310,32 @@ nav div:nth-child(2){display:none;}
 
 <script>
 function toggleMenu(){
-const menu = document.getElementById('mobileMenu');
-menu.classList.toggle('active');
+document.getElementById('mobileMenu').classList.toggle('active');
 }
 
-// CLOSE MENU OUTSIDE CLICK
-document.addEventListener('click', function(event) {
-const menu = document.getElementById('mobileMenu');
-const icon = document.querySelector('.menu-icon');
-
-if (!menu.contains(event.target) && !icon.contains(event.target)) {
+// close on outside click
+document.addEventListener('click', function(e){
+const menu=document.getElementById('mobileMenu');
+const icon=document.querySelector('.menu-icon');
+if(!menu.contains(e.target)&&!icon.contains(e.target)){
 menu.classList.remove('active');
 }
 });
 
-// NAV SHRINK
-window.addEventListener('scroll', function(){
-const nav = document.querySelector('nav');
-nav.classList.toggle('shrink', window.scrollY > 50);
+// navbar shrink
+window.addEventListener('scroll',()=>{
+document.querySelector('nav').classList.toggle('shrink',window.scrollY>50);
 });
 
-// AUTO SLIDER
-document.querySelectorAll('.slider').forEach(slider => {
-let imgs = slider.querySelectorAll('img');
-let i = 0;
-setInterval(() => {
+// slider
+document.querySelectorAll('.slider').forEach(slider=>{
+let imgs=slider.querySelectorAll('img');
+let i=0;
+setInterval(()=>{
 imgs[i].classList.remove('active');
-i = (i + 1) % imgs.length;
+i=(i+1)%imgs.length;
 imgs[i].classList.add('active');
-}, 3000);
+},3000);
 });
 </script>
 
