@@ -16,7 +16,6 @@ background:#fff;
 color:#333;
 }
 
-/* HEADINGS FONT */
 h1,h2,h3{
 font-family:'Playfair Display', serif;
 }
@@ -31,19 +30,22 @@ background:#000;
 position:sticky;
 top:0;
 z-index:1000;
-transition:0.3s;
 }
 
-nav.shrink{padding:6px 20px;}
-
 .header-logo{height:32px;}
-nav.shrink .header-logo{height:26px;}
 
 nav a{
 color:#fff;
 margin:0 12px;
 text-decoration:none;
-font-weight:500;
+}
+
+/* MENU ICON HIDDEN BY DEFAULT */
+.menu-icon{
+display:none;
+color:#fff;
+font-size:24px;
+cursor:pointer;
 }
 
 /* MOBILE MENU */
@@ -83,14 +85,14 @@ url('https://images.pexels.com/photos/6311392/pexels-photo-6311392.jpeg');
 background-size:cover;
 background-position:center;
 display:flex;
-flex-direction:column;
 justify-content:center;
 align-items:center;
+flex-direction:column;
 color:#fff;
 text-align:center;
 }
 
-.hero h1{font-size:48px;margin:0;}
+.hero h1{font-size:48px;}
 .hero p{font-size:18px;}
 
 .hero button{
@@ -100,7 +102,6 @@ border:none;
 color:#fff;
 border-radius:25px;
 cursor:pointer;
-font-family:'Poppins', sans-serif;
 }
 
 /* SECTIONS */
@@ -118,10 +119,7 @@ gap:25px;
 border-radius:15px;
 overflow:hidden;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
-transition:0.3s;
 }
-
-.card:hover{transform:translateY(-8px);}
 
 /* IMAGE FIX */
 .slider{
@@ -138,7 +136,7 @@ width:100%;
 height:100%;
 object-fit:contain;
 opacity:0;
-transition:opacity 1s ease-in-out;
+transition:0.5s;
 }
 
 .slider img.active{opacity:1;}
@@ -146,23 +144,8 @@ transition:opacity 1s ease-in-out;
 .card h3{margin:10px;}
 .card p{padding:0 10px 15px;}
 
-/* ABOUT */
-.about{background:#f9f9f9}
-
 /* CONTACT */
 .contact{background:#111;color:#fff}
-
-/* WHATSAPP */
-.whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-color:#fff;
-padding:15px;
-border-radius:50%;
-text-decoration:none;
-}
 
 /* FOOTER */
 footer{
@@ -180,8 +163,13 @@ text-decoration:none;
 
 /* RESPONSIVE */
 @media(max-width:768px){
+
+/* SHOW MENU ICON ONLY MOBILE */
+.menu-icon{display:block;}
+
+/* HIDE NAV LINKS */
 nav div:nth-child(2){display:none;}
-.menu-icon{display:block;color:#fff;font-size:24px;}
+
 .hero h1{font-size:30px;}
 }
 </style>
@@ -222,12 +210,6 @@ nav div:nth-child(2){display:none;}
 <button onclick="document.getElementById('products').scrollIntoView()">Shop Now</button>
 </div>
 
-<!-- ABOUT -->
-<section id="about" class="about">
-<h2>About Us</h2>
-<p>Premium ladies innerwear, shapewear, maternity wear & nightwear crafted for comfort and confidence.</p>
-</section>
-
 <!-- PRODUCTS -->
 <section id="products">
 <h2>Our Products</h2>
@@ -236,74 +218,57 @@ nav div:nth-child(2){display:none;}
 
 <div class="card">
 <div class="slider">
-<img src="https://m.media-amazon.com/images/I/71r9G9b7ZIL._UY679_.jpg" class="active">
-<img src="https://m.media-amazon.com/images/I/61v4VY1Jc9L._UY679_.jpg">
-<img src="https://m.media-amazon.com/images/I/71pWzhFZ5VL._UY679_.jpg">
+<img src="https://images.pexels.com/photos/6311392/pexels-photo-6311392.jpeg" class="active">
+<img src="https://images.pexels.com/photos/6311603/pexels-photo-6311603.jpeg">
 </div>
 <h3>Innerwear</h3>
-<p>Bras & essentials</p>
+<p>Essentials</p>
 </div>
 
 <div class="card">
 <div class="slider">
-<img src="https://m.media-amazon.com/images/I/61l6JX1sZyL._UY679_.jpg" class="active">
-<img src="https://m.media-amazon.com/images/I/61c2gF9JrXL._UY679_.jpg">
-<img src="https://m.media-amazon.com/images/I/71j9lW+R7TL._UY679_.jpg">
+<img src="https://images.pexels.com/photos/7679720/pexels-photo-7679720.jpeg" class="active">
+<img src="https://images.pexels.com/photos/6311612/pexels-photo-6311612.jpeg">
 </div>
 <h3>Shapewear</h3>
-<p>Body shaping wear</p>
+<p>Body shaping</p>
 </div>
 
 <div class="card">
 <div class="slider">
-<img src="https://m.media-amazon.com/images/I/61bH+Y6P0qL._UY679_.jpg" class="active">
-<img src="https://m.media-amazon.com/images/I/71lY7h+K1GL._UY679_.jpg">
-<img src="https://m.media-amazon.com/images/I/61rJX+J9Y9L._UY679_.jpg">
+<img src="https://images.pexels.com/photos/7897868/pexels-photo-7897868.jpeg" class="active">
+<img src="https://images.pexels.com/photos/7898037/pexels-photo-7898037.jpeg">
 </div>
 <h3>Maternity</h3>
-<p>Feeding & comfort wear</p>
+<p>Comfort wear</p>
 </div>
 
 <div class="card">
 <div class="slider">
-<img src="https://m.media-amazon.com/images/I/71k1xg6J7BL._UY679_.jpg" class="active">
-<img src="https://m.media-amazon.com/images/I/61d4QZ+Y8HL._UY679_.jpg">
-<img src="https://m.media-amazon.com/images/I/71m8gZ3mWLL._UY679_.jpg">
+<img src="https://images.pexels.com/photos/6311585/pexels-photo-6311585.jpeg" class="active">
+<img src="https://images.pexels.com/photos/6311394/pexels-photo-6311394.jpeg">
 </div>
 <h3>Nightwear</h3>
-<p>Sleepwear sets</p>
+<p>Sleepwear</p>
 </div>
 
 <div class="card">
 <div class="slider">
-<img src="https://m.media-amazon.com/images/I/61nP5ZzJYKL._UY679_.jpg" class="active">
-<img src="https://m.media-amazon.com/images/I/61YkX1lQ3KL._UY679_.jpg">
-<img src="https://m.media-amazon.com/images/I/71gF1bG4rTL._UY679_.jpg">
+<img src="https://images.pexels.com/photos/6311600/pexels-photo-6311600.jpeg" class="active">
+<img src="https://images.pexels.com/photos/6311596/pexels-photo-6311596.jpeg">
 </div>
 <h3>Accessories</h3>
-<p>Straps & essentials</p>
+<p>Add-ons</p>
 </div>
 
 </div>
 </section>
-
-<!-- CONTACT -->
-<section id="contact" class="contact">
-<h2>Contact Us</h2>
-<p>📞 +91 8129784499</p>
-<p>📞 +91 97466 36555</p>
-</section>
-
-<!-- WHATSAPP -->
-<a class="whatsapp" href="https://wa.me/918129784499" target="_blank">💬</a>
 
 <!-- FOOTER -->
 <footer>
 <div class="footer-menu">
 <a href="#">Home</a>
-<a href="#about">About</a>
 <a href="#products">Products</a>
-<a href="#contact">Contact</a>
 </div>
 <p>© 2026 Fluffy Bloom</p>
 </footer>
@@ -319,10 +284,6 @@ const icon=document.querySelector('.menu-icon');
 if(!menu.contains(e.target)&&!icon.contains(e.target)){
 menu.classList.remove('active');
 }
-});
-
-window.addEventListener('scroll',()=>{
-document.querySelector('nav').classList.toggle('shrink',window.scrollY>50);
 });
 
 document.querySelectorAll('.slider').forEach(slider=>{
