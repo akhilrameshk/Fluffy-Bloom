@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fluffy Bloom</title>
 
+<!-- FONTS -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 body{
 margin:0;
 font-family:'Poppins', sans-serif;
-background:#fff;
 color:#333;
 }
 
@@ -76,7 +76,7 @@ border-bottom:1px solid #333;
 padding-bottom:10px;
 }
 
-/* HERO IMAGE FIXED */
+/* HERO */
 .hero{
 height:90vh;
 background:
@@ -84,7 +84,6 @@ linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
 url('https://images.unsplash.com/photo-1581044777550-4cfa60707c03?auto=format&fit=crop&w=1200&q=80');
 background-size:cover;
 background-position:center;
-background-repeat:no-repeat;
 display:flex;
 justify-content:center;
 align-items:center;
@@ -106,7 +105,11 @@ cursor:pointer;
 }
 
 /* SECTIONS */
-section{padding:60px 20px;text-align:center;}
+section{
+padding:60px 20px;
+text-align:center;
+}
+
 h2{color:#8b0033;}
 
 /* PRODUCTS */
@@ -120,24 +123,41 @@ gap:25px;
 border-radius:15px;
 overflow:hidden;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
+background:#fff;
 }
 
-/* PRODUCT IMAGES FIXED */
-.product-img img{
-width:100%;
+.product-img{
 height:220px;
-object-fit:cover;
-display:block;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#f4f4f4;
+font-weight:bold;
+color:#777;
 }
-
-.card h3{margin:10px;}
-.card p{padding:0 10px 15px;}
 
 /* ABOUT */
 .about{background:#f9f9f9}
 
 /* CONTACT */
-.contact{background:#111;color:#fff}
+.contact{
+background:#111;
+color:#fff;
+}
+
+/* MAP */
+.map-container{
+margin-top:20px;
+width:100%;
+height:300px;
+}
+
+.map-container iframe{
+width:100%;
+height:100%;
+border:0;
+border-radius:10px;
+}
 
 /* FOOTER */
 footer{
@@ -199,7 +219,8 @@ nav div:nth-child(2){display:none;}
 <!-- ABOUT -->
 <section id="about" class="about">
 <h2>About Us</h2>
-<p>Premium ladies innerwear, shapewear, maternity wear & nightwear crafted for comfort and confidence.</p>
+<p>Fluffy Bloom offers premium ladies innerwear, maternity wear, shapewear, and stylish nightwear designed for comfort and confidence.</p>
+<p>Located at Municipal Shopping Complex, Cherthala, Alappuzha, Kerala.</p>
 </section>
 
 <!-- PRODUCTS -->
@@ -209,43 +230,28 @@ nav div:nth-child(2){display:none;}
 <div class="products">
 
 <div class="card">
-<div class="product-img">
-<img src="https://picsum.photos/400/300?random=1">
-</div>
+<div class="product-img">Innerwear</div>
 <h3>Innerwear</h3>
-<p>Essentials</p>
 </div>
 
 <div class="card">
-<div class="product-img">
-<img src="https://picsum.photos/400/300?random=2">
-</div>
+<div class="product-img">Shapewear</div>
 <h3>Shapewear</h3>
-<p>Body shaping</p>
 </div>
 
 <div class="card">
-<div class="product-img">
-<img src="https://picsum.photos/400/300?random=3">
-</div>
+<div class="product-img">Maternity</div>
 <h3>Maternity</h3>
-<p>Comfort wear</p>
 </div>
 
 <div class="card">
-<div class="product-img">
-<img src="https://picsum.photos/400/300?random=4">
-</div>
+<div class="product-img">Nightwear</div>
 <h3>Nightwear</h3>
-<p>Sleepwear</p>
 </div>
 
 <div class="card">
-<div class="product-img">
-<img src="https://picsum.photos/400/300?random=5">
-</div>
+<div class="product-img">Accessories</div>
 <h3>Accessories</h3>
-<p>Add-ons</p>
 </div>
 
 </div>
@@ -254,8 +260,24 @@ nav div:nth-child(2){display:none;}
 <!-- CONTACT -->
 <section id="contact" class="contact">
 <h2>Contact Us</h2>
+
 <p>📞 +91 8129784499</p>
 <p>📞 +91 97466 36555</p>
+
+<p>
+📍 Municipal Shopping Complex,<br>
+Opp: Karthyayani Devi Temple,<br>
+Cherthala (PO), Alappuzha,<br>
+Kerala - 688524
+</p>
+
+<div class="map-container">
+<iframe 
+src="https://maps.google.com/maps?q=Cherthala%20Municipal%20Shopping%20Complex&t=&z=15&ie=UTF8&iwloc=&output=embed"
+loading="lazy">
+</iframe>
+</div>
+
 </section>
 
 <!-- FOOTER -->
