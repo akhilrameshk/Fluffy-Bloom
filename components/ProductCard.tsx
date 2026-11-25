@@ -1,22 +1,126 @@
 import Link from 'next/link';
-import { Paper, Typography } from './ui';
+import { Box, Paper, Typography } from './ui';
 import ProductImage from './ProductImage';
 import WhatsAppButton from './WhatsAppButton';
 import { SITE_URL } from '@/lib/env';
 import { enquiryText, inr, productPath } from '@/lib/utils';
 import type { IProduct } from '@/types';
 
-export default function ProductCard({ p, wa }: { p: IProduct; wa: string }) {
+export default function ProductCard({
+  p,
+  wa,
+  showDescription = false,
+}: {
+  p?: IProduct | null;
+  wa?: string;
+  showDescription?: boolean;
+}) {
+  if (!p) return null;
+
+  const href = productPath(p);
+  const desc =
+    typeof (p as any)?.description === 'string' ? (p as any).description.trim() : '';
+
   return (
-    <Paper component="article" sx={{ p: 2, display: 'grid', gap: 1.25, borderRadius: 4, alignContent: 'start' }}>
-      <Link href={productPath(p)} style={{ display: 'block' }}>
-        <ProductImage src={p.image} alt={p.name} radius={2} bg="#f4efe9" />
+    <Paper
+      component="article"
+      sx={{
+        p: showDescription ? { xs: 2, sm: 2.5 } : 2,
+        width: '100%',
+        display: 'grid',
+        gap: showDescription ? 1.5 : 1.25,
+        borderRadius: 4,
+        alignContent: 'start',
+        border: '1px solid rgba(255, 255, 255, 0.08)',
+        background:
+          'linear-gradient(180deg, rgba(24, 16, 22, 0.95) 0%, rgba(15, 10, 14, 0.99) 100%)',
+        transition: 'border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease',
+        '&:hover': {
+          borderColor: 'rgba(255, 46, 147, 0.48)',
+          transform: 'translateY(-3px)',
+          boxShadow: '0 16px 36px rgba(0, 0, 0, 0.65)',
+        },
+      }}
+    >
+      <Link href={href} style={{ display: 'block', textDecoration: 'none' }}>
+        <ProductImage
+          src={p.image}
+          alt={p.name || 'Product'}
+          radius={2.5}
+          bg="#f4efe9"
+        />
       </Link>
-      <Typography sx={{ fontWeight: 700, fontSize: 22, color: 'primary.main' }}>{inr(p.price)}</Typography>
-      <Typography component="h3" sx={{ fontSize: 16 }}>
-        <Link href={productPath(p)}>{p.name}</Link>
-      </Typography>
-      <WhatsAppButton number={wa} text={enquiryText(p, SITE_URL)} size="small" fullWidth radius={2}>Enquire via WhatsApp</WhatsAppButton>
+
+      {/* Product Title (Left) + Price (Right) */}
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'baseline',
+          justifyContent: 'space-between',
+          gap: 1.5,
+          mt: 0.25,
+        }}
+      >
+        <Typography
+          component="h3"
+          sx={{
+            fontSize: showDescription ? { xs: 17, sm: 18.5 } : 15.5,
+            fontWeight: 700,
+            lineHeight: 1.3,
+            minWidth: 0,
+            flex: 1,
+          }}
+        >
+          <Link
+            href={href}
+            style={{
+              color: '#f3e8ee',
+              textDecoration: 'none',
+            }}
+          >
+            {p.name}
+          </Link>
+        </Typography>
+
+        <Typography
+          sx={{
+            fontWeight: 800,
+            fontSize: showDescription ? { xs: 20, sm: 22 } : 19,
+            color: 'primary.main',
+            lineHeight: 1.15,
+            whiteSpace: 'nowrap',
+            flexShrink: 0,
+          }}
+        >
+          {inr(p.price)}
+        </Typography>
+      </Box>
+
+      {showDescription && desc && (
+        <Typography
+          sx={{
+            fontSize: { xs: 13.5, sm: 14 },
+            lineHeight: 1.55,
+            color: '#cfc0c9',
+            display: '-webkit-box',
+            WebkitLineClamp: 3,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
+          }}
+        >
+          {desc}
+        </Typography>
+      )}
+
+      <WhatsAppButton
+        number={wa || '9072177570'}
+        text={enquiryText(p, SITE_URL)}
+        size={showDescription ? 'medium' : 'small'}
+        fullWidth
+        radius={2.5}
+      >
+        Enquire via WhatsApp
+      </WhatsAppButton>
     </Paper>
   );
 }

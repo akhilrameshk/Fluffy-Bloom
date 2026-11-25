@@ -5,10 +5,23 @@ import { NAV } from '@/lib/site';
 import { getBranches, waLink } from '@/lib/utils';
 import type { ISettings } from '@/types';
 
+const DEFAULT_BRANCHES = [
+  {
+    name: 'Cherthala',
+    address:
+      'Opp: Karthyayani Devi Temple, Municipal Shopping Complex, CMC 11, Cherthala (PO), Alappuzha, Kerala, PIN 688524',
+  },
+  {
+    name: 'Thiruvampady',
+    address:
+      'Building no 27/43C, Thiruvampady Junction, Near Muthoot Fin corp, Opposite Utkarsh Small Finance Bank, Pazhaveed PO, Alappuzha 688 009',
+  },
+];
+
 const smallTextSx = {
   color: '#bfb0b8',
   fontSize: 13.5,
-  lineHeight: 1.85,
+  lineHeight: 1.75,
 };
 
 const headingSx = {
@@ -36,19 +49,30 @@ function Column({ title, children }: { title: ReactNode; children: ReactNode }) 
       <Typography component="h2" sx={headingSx}>
         {title}
       </Typography>
-      <Box sx={{ display: 'grid', gap: 0.35 }}>{children}</Box>
+      <Box sx={{ display: 'grid', gap: 0.75 }}>{children}</Box>
     </Box>
   );
 }
 
 export default function Footer({ s }: { s: ISettings }) {
+  const waNumber = s?.whatsapp || '9746636555';
   const socials = [
     { label: 'Instagram', href: s?.instagram, icon: <InstagramIcon fontSize="small" /> },
     { label: 'Facebook', href: s?.facebook, icon: <FacebookIcon fontSize="small" /> },
-    { label: 'WhatsApp', href: waLink(s?.whatsapp), icon: <WhatsAppIcon fontSize="small" /> },
+    { label: 'WhatsApp', href: waLink(waNumber), icon: <WhatsAppIcon fontSize="small" /> },
   ].filter((x) => Boolean(x.href));
 
-  const branches = getBranches(s);
+  const rawBranches = getBranches(s);
+  const branches =
+    Array.isArray(rawBranches) && rawBranches.length > 0
+      ? rawBranches.map((b, idx) => ({
+          name: b.name || DEFAULT_BRANCHES[idx]?.name || `Branch ${idx + 1}`,
+          address:
+            b.address && b.address.trim().toLowerCase() !== 'alappuzha'
+              ? b.address
+              : DEFAULT_BRANCHES[idx]?.address || 'Alappuzha, Kerala',
+        }))
+      : DEFAULT_BRANCHES;
 
   return (
     <Box
@@ -76,7 +100,7 @@ export default function Footer({ s }: { s: ISettings }) {
             gridTemplateColumns: {
               xs: '1fr',
               sm: 'repeat(2, 1fr)',
-              lg: '1.25fr 1.65fr 1.3fr 1.1fr',
+              lg: '1.1fr 2.1fr 1.15fr 0.95fr',
             },
             alignItems: 'start',
           }}
@@ -98,35 +122,45 @@ export default function Footer({ s }: { s: ISettings }) {
             >
               FLUFFY BLOOM
             </Typography>
-            <Typography sx={{ ...smallTextSx, fontSize: 11, letterSpacing: 1.1, color: '#a895a0' }}>
+            <Typography
+              sx={{ ...smallTextSx, fontSize: 11, letterSpacing: 1.1, color: '#a895a0' }}
+            >
               INNERWEAR • LINGERIE • MORE...
             </Typography>
             <Typography sx={{ ...smallTextSx, mt: 0.5 }}>
-              Comfort, confidence, and everyday elegance across Cherthala &amp; Thiruvampadi, Alappuzha.
+              Ladies Innerwears, Newborn &amp; Maternity Wears across Cherthala &amp; Alappuzha.
             </Typography>
           </Box>
 
-          {/* Locations Column */}
+          {/* Locations Column: 2-Column Side-by-Side Branches */}
           <Column title="Our Locations">
-            {branches.map((b) => (
-              <Typography key={b.name} sx={smallTextSx}>
-                <Box component="span" sx={{ color: '#ffffff', fontWeight: 600 }}>
-                  {b.name} Branch:
-                </Box>{' '}
-                {b.address || 'Alappuzha'}
-              </Typography>
-            ))}
-            {s?.whatsapp && (
-              <Typography sx={{ ...smallTextSx, mt: 0.25 }}>
-                <Box component="span" sx={{ color: '#ffffff', fontWeight: 600 }}>
-                  Ph:
-                </Box>{' '}
-                +91 {s.whatsapp}
-              </Typography>
-            )}
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))' },
+                gap: 2,
+              }}
+            >
+              {branches.map((b) => (
+                <Box key={b.name}>
+                  <Typography sx={{ ...smallTextSx, color: '#ffffff', fontWeight: 700, mb: 0.25 }}>
+                    {b.name} Branch
+                  </Typography>
+                  <Typography sx={{ ...smallTextSx, fontSize: 12.5, lineHeight: 1.65 }}>
+                    {b.address}
+                  </Typography>
+                </Box>
+              ))}
+            </Box>
+            <Typography sx={{ ...smallTextSx, mt: 0.75, fontSize: 13 }}>
+              <Box component="span" sx={{ color: '#ffffff', fontWeight: 600 }}>
+                Ph:
+              </Box>{' '}
+              +91 97466 36555 / +91 81297 84499
+            </Typography>
           </Column>
 
-          {/* Navigation Column */}
+          {/* Navigation Column: 2-Column Links */}
           <Column title="Navigation & Links">
             <Box
               sx={{
@@ -220,7 +254,7 @@ export default function Footer({ s }: { s: ISettings }) {
             © {new Date().getFullYear()} Fluffy Bloom Family. All Rights Reserved.
           </Typography>
           <Typography sx={{ ...smallTextSx, fontSize: 12.5, color: '#9c8994' }}>
-            Cherthala &amp; Thiruvampadi • Alappuzha
+            Cherthala &amp; Alappuzha • Kerala
           </Typography>
         </Box>
       </Box>
