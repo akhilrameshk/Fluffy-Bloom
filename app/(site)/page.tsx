@@ -73,7 +73,24 @@ export default async function Home() {
     (cats || []).map(async (c: any) => {
       try {
         const res = await getProducts({ category: c._id });
-        return Array.isArray(res) ? res : [];
+        const list = Array.isArray(res) ? res : [];
+        const catLabel = c?.name || c?.title || '';
+
+        return list.map((item: any) => ({
+          ...item,
+          category:
+            item?.category && typeof item.category === 'object' && item.category.name
+              ? item.category
+              : catLabel
+              ? { _id: c._id, name: catLabel }
+              : item?.category,
+          categoryName:
+            (typeof item?.category === 'object' && item?.category?.name) ||
+            (typeof item?.category === 'string' && item.category.trim() !== String(c._id)
+              ? item.category
+              : '') ||
+            catLabel,
+        }));
       } catch {
         return [];
       }
@@ -90,6 +107,16 @@ export default async function Home() {
         item.name.trim().length > 0
     )
     .slice(0, 4);
+
+  console.log(
+    'featuredFour categories:',
+    featuredFour.map((item: any) => ({
+      id: item?._id,
+      name: item?.name,
+      category: item?.category,
+      categoryName: item?.categoryName,
+    }))
+  );
 
   const heroBg = HERO_FALLBACK;
   const cleanWa = String(s?.whatsapp || '9746636555').replace(/\D/g, '');

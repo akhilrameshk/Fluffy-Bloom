@@ -8,6 +8,27 @@ import InquiryModal from './InquiryModal';
 import { inr, productPath } from '@/lib/utils';
 import type { IProduct } from '@/types';
 
+function resolveCategoryName(p: any): string {
+  if (!p) return '';
+  if (typeof p.categoryName === 'string' && p.categoryName.trim()) {
+    return p.categoryName.trim();
+  }
+  if (typeof p.categoryTitle === 'string' && p.categoryTitle.trim()) {
+    return p.categoryTitle.trim();
+  }
+  if (typeof p.category === 'object' && p.category) {
+    return String(p.category.name || p.category.title || '').trim();
+  }
+  if (
+    typeof p.category === 'string' &&
+    p.category.trim() &&
+    !/^[a-f\d]{24}$/i.test(p.category.trim())
+  ) {
+    return p.category.trim();
+  }
+  return '';
+}
+
 export default function ProductCard({
   p,
   wa,
@@ -24,6 +45,7 @@ export default function ProductCard({
   const href = productPath(p);
   const desc =
     typeof (p as any)?.description === 'string' ? (p as any).description.trim() : '';
+  const categoryName = resolveCategoryName(p);
 
   return (
     <>
@@ -148,6 +170,8 @@ export default function ProductCard({
         product={{
           id: (p as any)?._id || (p as any)?.id,
           name: p.name || 'Boutique Item',
+          category: categoryName,
+          categoryName,
           image: p.image,
           price: p.price,
         }}

@@ -19,6 +19,8 @@ import { inr, waLink } from '@/lib/utils';
 export interface InquiryProduct {
   id?: string | number;
   name: string;
+  category?: string | { name?: string; title?: string } | null;
+  categoryName?: string;
   image?: string;
   branch?: string;
   price?: string | number;
@@ -30,6 +32,20 @@ interface InquiryModalProps {
   product: InquiryProduct | null;
   whatsappNumber?: string;
   defaultBranch?: string;
+}
+
+function getCategoryLabel(product?: InquiryProduct | null): string {
+  if (!product) return '';
+  if (product.categoryName && typeof product.categoryName === 'string') {
+    return product.categoryName.trim();
+  }
+  const cat = product.category;
+  if (!cat) return '';
+  if (typeof cat === 'string') return cat.trim();
+  if (typeof cat === 'object') {
+    return String(cat.name || cat.title || '').trim();
+  }
+  return '';
 }
 
 export default function InquiryModal({
@@ -51,6 +67,7 @@ export default function InquiryModal({
     }
   }, [open, product]);
 
+  const categoryName = getCategoryLabel(product);
   const unitPrice = Number(product?.price ?? 0);
   const hasValidPrice = !Number.isNaN(unitPrice) && unitPrice > 0;
   const totalAmount = hasValidPrice ? unitPrice * quantity : 0;
@@ -82,6 +99,7 @@ export default function InquiryModal({
     setError('');
 
     const itemName = product?.name || 'Boutique Collection';
+    const categoryLine = categoryName ? `🏷️ *Category:* ${categoryName}` : '';
     const priceLines = hasValidPrice
       ? [
           `💰 *Per Item:* ${inr(unitPrice)}`,
@@ -94,6 +112,7 @@ export default function InquiryModal({
       `✨ *FLUFFY BLOOM — PRODUCT INQUIRY* ✨`,
       `────────────────────────`,
       `🛍️ *Item:* ${itemName}`,
+      ...(categoryLine ? [categoryLine] : []),
       `🔢 *Quantity:* ${quantity}`,
       ...(priceLines ? [priceLines] : []),
       `────────────────────────`,
@@ -173,7 +192,7 @@ export default function InquiryModal({
           onSubmit={handleSubmit}
           sx={{ display: 'grid', gap: 1.85 }}
         >
-          {/* Product Photo, Name (Left) + Price (Right) */}
+          {/* Product Photo, Category + Name (Left) + Price (Right) */}
           <Box
             sx={{
               p: 1.5,
@@ -220,16 +239,32 @@ export default function InquiryModal({
                 )}
               </Box>
 
-              <Typography
-                sx={{
-                  fontSize: 15,
-                  fontWeight: 700,
-                  color: '#ffffff',
-                  lineHeight: 1.35,
-                }}
-              >
-                {product?.name || 'Boutique Item'}
-              </Typography>
+              <Box sx={{ minWidth: 0, flex: 1 }}>
+                {categoryName && (
+                  <Typography
+                    sx={{
+                      fontSize: 10.5,
+                      fontWeight: 700,
+                      letterSpacing: 1.1,
+                      textTransform: 'uppercase',
+                      color: '#ff9ed0',
+                      mb: 0.2,
+                    }}
+                  >
+                    {categoryName}
+                  </Typography>
+                )}
+                <Typography
+                  sx={{
+                    fontSize: 15,
+                    fontWeight: 700,
+                    color: '#ffffff',
+                    lineHeight: 1.35,
+                  }}
+                >
+                  {product?.name || 'Boutique Item'}
+                </Typography>
+              </Box>
             </Box>
 
             {hasValidPrice && (
