@@ -58,7 +58,7 @@ export default function Products() {
         {!shown.length && <Typography color="text.secondary">No products yet.</Typography>}
       </Paper>
       <FormPanel title={`${editId ? 'Edit' : 'Add'} Product`} width={340}>
-        <TextField label="Name" value={f.name} onChange={set('name')} />
+        <TextField label="Brand" value={f.name} onChange={set('name')} />
         <TextField label="Price" type="number" value={f.price} onChange={set('price')} />
         <TextField select label="Category" value={f.category} onChange={set('category')}>
           {cats.map((c) => <MenuItem key={c._id} value={c._id}>{c.name}</MenuItem>)}

@@ -1,6 +1,16 @@
 'use client';
 // Client re-exports so server components can use MUI.
-export { Box, Button, Chip, Paper, Typography } from '@mui/material';
+export {
+  Box,
+  Button,
+  Chip,
+  Dialog,
+  DialogContent,
+  IconButton,
+  Paper,
+  TextField,
+  Typography,
+} from '@mui/material';
 export { default as WhatsAppIcon } from '@mui/icons-material/WhatsApp';
 export { default as PhoneIcon } from '@mui/icons-material/Phone';
 export { default as PlaceIcon } from '@mui/icons-material/Place';
@@ -13,3 +23,6 @@ export { default as SpaIcon } from '@mui/icons-material/SpaOutlined';
 export { default as FavoriteIcon } from '@mui/icons-material/FavoriteBorder';
 export { default as VerifiedIcon } from '@mui/icons-material/WorkspacePremiumOutlined';
 export { default as HandshakeIcon } from '@mui/icons-material/HandshakeOutlined';
+export { default as AddIcon } from '@mui/icons-material/Add';
+export { default as RemoveIcon } from '@mui/icons-material/Remove';
+export { default as CloseIcon } from '@mui/icons-material/Close';
